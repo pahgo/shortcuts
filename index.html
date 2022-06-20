@@ -25,15 +25,14 @@
 <div class="container">
 	<div ng-repeat="env in environments" ng-init="parentIndex = $index">
 		<h1 ng-if="!editing">{{env.name}}</h1>
-		<h1 ng-if="editing"><input type="text" ng-model="env.name"/></h1>
-		<div ng-if="editing">
-			<button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ng-click="removeEnv(parentIndex)" ><i class="fa fa-trash"></i>Remove this Environment
-		</div>
+		<h1 ng-if="editing"><input type="text" ng-model="env.name"/>
+			<button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ng-click="removeEnv(parentIndex)" ><i class="fa fa-trash"></i>Remove this Environment</button>
+		</h1>
 
 		<div class="row text-center">
 			<div ng-repeat="page in env.pages" class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
-					<div style="min-height: 150px;" ng-if="!editing"><img class="card-img-top" src="{{page.image}}" class="img-thumbnail" style="align-self: center;max-height: 150px;max-width: 250px;width: auto;height: auto;"></div>
+					<div style="min-height: 150px;" ><img class="card-img-top" src="{{page.image}}" class="img-thumbnail" style="align-self: center;max-height: 150px;max-width: 250px;width: auto;height: auto;"></div>
 					<div style="height: 150px;" ng-if="editing">Image Url<input type="text" ng-model="page.image"/></div>
 
 					<div class="card-footer" style="margin-top: 10px;">
@@ -47,12 +46,12 @@
 				</div>
 			</div>
 			<div ng-if="editing">
-				<button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="" ng-click="addNewPage(parentIndex)" ><i class="fa fa-trash"></i>Add New Page</button>				
+				<button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="" ng-click="addNewPage(parentIndex)" ><i class="fa fa-trash"></i>Add New Page</button>
 			</div>
 		</div>
 	</div>
 	<div ng-if="editing">
-		<button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="" ng-click="addNewEnv()" ><i class="fa fa-trash"></i>Add New Environment</button>				
+		<button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="" ng-click="addNewEnv()" ><i class="fa fa-trash"></i>Add New Environment</button>
 	</div>
 
 </div>
