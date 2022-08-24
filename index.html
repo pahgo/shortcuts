@@ -39,8 +39,13 @@
 
 					<div class="card-footer" style="margin-top: 10px;">
 						<a ng-if="!editing" href="{{page.addr}}" target="_blank" class="btn btn-primary" style="min-width: 90px">{{page.name}}</a>
+						<br/><br/>
+						<a ng-if="!editing && page.username" href="" class="btn btn-info" style="min-width: 45px" ng-click="copy(parentIndex, $index, 'username')"><i class="fa fa-copy"></i>&nbsp;User</a>
+						<a ng-if="!editing && page.password" href="" class="btn btn-info" style="min-width: 45px" ng-click="copy(parentIndex, $index, 'password')"><i class="fa fa-copy"></i>&nbsp;Pass</a>
 						<div ng-if="editing">Page Name<input type="text" ng-model="page.name" /></div>
 						<div ng-if="editing">Page Address<input type="text" ng-model="page.addr" /></div>
+						<div ng-if="editing">Username<input type="text" ng-model="page.username"/></div>
+						<div ng-if="editing">Password<input type="text" ng-model="page.password"/></div>
 						<div ng-if="editing" style="margin-top: inherit;">
 							<button class="btn btn-danger" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ng-click="remove(parentIndex, $index)" ><i class="fa fa-trash"></i>&nbsp;Delete</button>
 						</div>
@@ -79,6 +84,10 @@ app.controller('pagesCtr', function($scope) {
 	$scope.remove = function(envIndex, pageIndex) {
 		$scope.environments[envIndex].pages.splice(pageIndex,1);
 		localStorage.setItem("environments", JSON.stringify($scope.environments));
+	}
+	$scope.copy = function(envIndex, pageIndex, field) {
+		var text = $scope.environments[envIndex].pages[pageIndex][field];
+		navigator.clipboard.writeText(text);
 	}
 	$scope.removeEnv = function(parentIndex) {
 		$scope.environments.splice(parentIndex,1);
@@ -135,7 +144,6 @@ app.controller('pagesCtr', function($scope) {
 		localStorage.setItem("environments", JSON.stringify(envs));
 		window.location.reload();
 	}
-
 });
 </script>
 
