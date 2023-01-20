@@ -24,7 +24,7 @@
       </div>
     </div>
   </nav>
-<div class="container" id="test">
+<div class="container">
 	<div ng-repeat="env in environments" ng-init="parentIndex = $index" class="card">
 		<h1 ng-if="!editing">{{env.name}}</h1>
 		<h1 ng-if="editing"><input type="text" ng-model="env.name"/>
@@ -146,6 +146,6 @@ app.controller('pagesCtr', function($scope) {
 	}
 });
 </script>
-Test
+
 </body>
 </html>
